@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hassan bhai stopppp</title>
+    <title>hassan bhai stopppp ULTIMATE</title>
     <style>
         :root {
-            --glitch: 0;
+            --shake: 0px;
+            --invert: 0;
         }
         * {
             margin: 0;
@@ -14,44 +15,49 @@
             box-sizing: border-box;
         }
         body {
-            background: #000;
+            background: #ff0000;
             width: 100vw;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Comic Sans MS', 'Impact', 'Arial Black', sans-serif;
-            animation: bgTorment 0.15s infinite alternate;
+            font-family: 'Comic Sans MS', 'Impact', 'Arial Black', cursive;
             cursor: none;
             user-select: none;
             -webkit-user-select: none;
+            animation: bgAgony 0.08s infinite alternate;
+            filter: invert(var(--invert));
+            transition: filter 0.05s;
             position: relative;
-            filter: hue-rotate(0deg);
-            animation: hueShift 0.8s infinite linear;
         }
-        @keyframes bgTorment {
+        @keyframes bgAgony {
             0% { background: #ff0000; }
-            25% { background: #00ff00; }
-            50% { background: #0000ff; }
-            75% { background: #ffff00; }
-            100% { background: #ff00ff; }
+            20% { background: #00ff00; }
+            40% { background: #0000ff; }
+            60% { background: #ffff00; }
+            80% { background: #ff00ff; }
+            100% { background: #00ffff; }
         }
-        @keyframes hueShift {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+        .global-shake {
+            animation: shakeGlobe 0.05s infinite;
+        }
+        @keyframes shakeGlobe {
+            0% { transform: translate(2px, -2px); }
+            25% { transform: translate(-3px, 1px); }
+            50% { transform: translate(3px, 3px); }
+            75% { transform: translate(-1px, -3px); }
+            100% { transform: translate(0, 0); }
         }
         .marquee {
             position: fixed;
-            top: 10px;
             left: 0;
             width: 100%;
             white-space: nowrap;
             overflow: hidden;
-            z-index: 10;
             pointer-events: none;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: #fff;
-            text-shadow: 3px 3px 0 #ff0000, 6px 6px 0 #00ff00, 9px 9px 0 #0000ff;
-            animation: marqueeScroll 4s linear infinite;
+            text-shadow: 4px 4px 0 #ff0000, 8px 8px 0 #00ff00;
+            animation: marqueeScroll 6s linear infinite;
         }
         @keyframes marqueeScroll {
             0% { transform: translateX(100%); }
@@ -59,24 +65,24 @@
         }
         .title {
             position: fixed;
-            top: 15%;
+            top: 20%;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 5;
-            pointer-events: none;
-            font-size: clamp(3rem, 10vw, 7rem);
+            font-size: clamp(4rem, 12vw, 9rem);
             font-weight: 900;
-            color: white;
-            text-shadow: 5px 5px 0 #ff0000, 10px 10px 0 #00ffff, 15px 15px 0 #ff00ff;
-            animation: shakeText 0.1s infinite alternate, colorFlip 0.2s infinite alternate;
+            color: #fff;
+            text-shadow: 5px 5px 0 #f0f, 10px 10px 0 #0ff, 15px 15px 0 #ff0;
+            animation: titleShake 0.1s infinite alternate, colorFlip 0.15s infinite alternate;
             white-space: nowrap;
+            z-index: 10;
+            pointer-events: none;
         }
-        @keyframes shakeText {
+        @keyframes titleShake {
             0% { transform: translateX(-50%) translate(0, 0); }
-            25% { transform: translateX(-50%) translate(5px, -5px); }
-            50% { transform: translateX(-50%) translate(-5px, 5px); }
-            75% { transform: translateX(-50%) translate(-5px, -5px); }
-            100% { transform: translateX(-50%) translate(5px, 5px); }
+            25% { transform: translateX(-50%) translate(8px, -8px); }
+            50% { transform: translateX(-50%) translate(-8px, 8px); }
+            75% { transform: translateX(-50%) translate(-8px, -8px); }
+            100% { transform: translateX(-50%) translate(8px, 8px); }
         }
         @keyframes colorFlip {
             0% { color: #fff; }
@@ -84,101 +90,93 @@
         }
         #annoyingBtn {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 25px 50px;
-            font-size: 2rem;
+            padding: 30px 60px;
+            font-size: 2.5rem;
             font-weight: bold;
             background: #ff0;
             color: #000;
-            border: 8px dashed #f00;
-            border-radius: 50px;
-            cursor: pointer;
-            z-index: 30;
+            border: 10px dashed #f00;
+            border-radius: 60px;
+            z-index: 50;
             white-space: nowrap;
-            box-shadow: 0 0 60px #f00, 0 0 120px #00f;
+            box-shadow: 0 0 90px #ff0000, 0 0 180px #0000ff;
             animation: btnPulse 0.3s infinite alternate;
+            cursor: pointer;
             transition: none;
-            user-select: none;
-            -webkit-user-select: none;
         }
         @keyframes btnPulse {
-            0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 60px #f00, 0 0 120px #00f; }
-            50% { transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 0 80px #ff0, 0 0 140px #0ff; }
-            100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 60px #f00, 0 0 120px #00f; }
-        }
-        #annoyingBtn:hover {
-            /* override hover styles, we control movement via JS */
+            0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 90px #f00, 0 0 180px #00f; }
+            100% { transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 0 120px #ff0, 0 0 210px #0ff; }
         }
         .stop-btn {
             position: fixed;
             bottom: 10px;
             right: 10px;
-            z-index: 50;
-            font-size: 12px;
-            color: rgba(255,255,255,0.2);
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 5px;
+            z-index: 70;
+            font-size: 11px;
+            color: rgba(255,255,255,0.15);
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            padding: 4px 8px;
             cursor: pointer;
-            padding: 5px;
-            pointer-events: auto;
             transition: opacity 0.1s;
-        }
-        .stop-btn:hover {
-            color: white;
-            border-color: white;
         }
         .floating-text {
             position: fixed;
             pointer-events: none;
-            z-index: 20;
-            font-size: 2.5rem;
+            z-index: 30;
+            font-size: 2.8rem;
             font-weight: bold;
             color: #ff0;
-            text-shadow: 0 0 20px red;
+            text-shadow: 0 0 20px red, 0 0 40px blue;
             animation: floatAway 2s forwards;
         }
         @keyframes floatAway {
-            0% { opacity: 1; transform: translate(0, 0) scale(0.5); }
-            100% { opacity: 0; transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px)) scale(2); }
+            0% { opacity: 1; transform: translate(0, 0) scale(0.3); }
+            100% { opacity: 0; transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px)) scale(2.2); }
         }
-        .shaker {
-            animation: shakeScreen 0.1s infinite;
-        }
-        @keyframes shakeScreen {
-            0% { transform: translate(3px, -3px); }
-            25% { transform: translate(-5px, 2px); }
-            50% { transform: translate(4px, 4px); }
-            75% { transform: translate(-2px, -5px); }
-            100% { transform: translate(0, 0); }
+        .rickroll-container {
+            position: fixed;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -99;
         }
     </style>
 </head>
-<body class="shaker">
-    <div class="marquee">💥 hassan bhai stopppp 💥 hassan bhai stopppp 💥 hassan bhai stopppp 💥 hassan bhai stopppp 💥 hassan bhai stopppp 💥</div>
+<body class="global-shake">
+    <!-- Marquees -->
+    <div class="marquee" style="top:5px;">🔥 hassan bhai stopppp hassan bhaii actuallyyyy 🔥 hassan bhai stopppp hassan bhaii actuallyyyy 🔥</div>
+    <div class="marquee" style="top:85px; animation-delay: -3s;">🦖 hassan bhai actuallyyyy stopppp 🦖 hassan bhai actuallyyyy stopppp 🦖</div>
+    <div class="marquee" style="top:165px; animation-delay: -5s; transform: rotate(2deg);">💥 hassan bhai stopppp 💥 hassan bhaii actuallyyyy 💥</div>
     <div class="title">hassan bhai stopppp</div>
 
     <button id="annoyingBtn">hassan bhai stopppp</button>
-    <button class="stop-btn" id="theOnlyStopBtn" title="please… make it stop…">😵 stop? (good luck)</button>
+    <button class="stop-btn" id="theOnlyStopBtn" title="you can't stop it">😵 stop???</button>
+
+    <!-- Rickroll iframe (hidden) -->
+    <div class="rickroll-container">
+        <iframe id="rickrollIframe" width="1" height="1" src="" allow="autoplay" style="border:none;"></iframe>
+    </div>
 
     <script>
         (function() {
-            // ============ THE ULTIMATE ANNOYANCE ENGINE ============
+            // ============ SUPER ANNOYANCE ENGINE ============
             const btn = document.getElementById('annoyingBtn');
             const stopBtn = document.getElementById('theOnlyStopBtn');
             let voiceInterval = null;
-            let chaosMultiplier = 1;
-            let clickCount = 0;
-
-            // Audio context for piercing beeps
+            let mp3AudioElement = null;
+            let rickrollStarted = false;
             let audioCtx = null;
-            function initAudio() {
+
+            // Init audio context
+            function initAudioCtx() {
                 if (!audioCtx) {
                     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
                 }
-                if (audioCtx.state === 'suspended') audioCtx.resume();
             }
 
             function playPiercingBeep() {
@@ -187,137 +185,160 @@
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(800, now);
-                osc.frequency.exponentialRampToValueAtTime(300, now + 0.3);
-                gain.gain.setValueAtTime(0.3, now);
-                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                osc.frequency.setValueAtTime(1200, now);
+                osc.frequency.exponentialRampToValueAtTime(200, now + 0.25);
+                gain.gain.setValueAtTime(0.4, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
                 osc.start(now);
-                osc.stop(now + 0.4);
+                osc.stop(now + 0.35);
             }
 
-            // Speak the sacred phrase
-            function speakAnnoyance() {
-                // Cancel any previous speech so they stack
-                if (window.speechSynthesis) {
-                    window.speechSynthesis.cancel(); // interrupt to say it again
-                }
-                const utterance = new SpeechSynthesisUtterance('hassan bhai stopppp');
-                utterance.rate = 0.7 + (Math.random() * 0.3); // slow and annoying
-                utterance.pitch = 0.5 + (Math.random() * 1.5);
-                utterance.volume = 1;
-                utterance.lang = 'en-US'; // default, will sound weird
-                speechSynthesis.speak(utterance);
+            // MP3 playback from user recording
+            function setupMP3() {
+                if (mp3AudioElement) return;
+                // Create an audio element for the user-supplied "hassan.mp3"
+                mp3AudioElement = new Audio();
+                mp3AudioElement.src = './hassan.mp3'; // User must name their MP3 exactly "hassan.mp3"
+                mp3AudioElement.loop = true;
+                mp3AudioElement.volume = 1.0;
+                // Play as soon as we get user gesture
+                mp3AudioElement.play().catch(e => console.log('MP3 play prevented, waiting for gesture'));
             }
 
+            // Rickroll via YouTube
+            function startRickroll() {
+                if (rickrollStarted) return;
+                rickrollStarted = true;
+                const iframe = document.getElementById('rickrollIframe');
+                // Use YouTube embed with autoplay, loop, and no controls
+                iframe.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=0&loop=1&playlist=dQw4w9WgXcQ&mute=0';
+                // Ensure iframe is allowed to autoplay (needs user gesture)
+            }
+
+            // Two overlapping speech voices: one low-pitched, one high-pitched
+            function speakAnnoyanceDual() {
+                if (!window.speechSynthesis) return;
+
+                // Cancel any previous to make stacking
+                speechSynthesis.cancel();
+
+                // First utterance: low, slow
+                const utter1 = new SpeechSynthesisUtterance('hassan bhai stopppp');
+                utter1.rate = 0.65;
+                utter1.pitch = 0.4;
+                utter1.volume = 1;
+                // Second utterance: high, fast, "hassan bhaii actuallyyyy"
+                const utter2 = new SpeechSynthesisUtterance('hassan bhaii actuallyyyy');
+                utter2.rate = 1.3;
+                utter2.pitch = 2.0;
+                utter2.volume = 1;
+
+                // Speak with a slight stagger
+                speechSynthesis.speak(utter1);
+                setTimeout(() => speechSynthesis.speak(utter2), 100);
+            }
+
+            // Continuous voice loop plus MP3
             function startContinuousAnnoyance() {
                 if (voiceInterval) return;
-                speakAnnoyance();
+                speakAnnoyanceDual();
                 playPiercingBeep();
+                // Ensure MP3 is playing
+                if (mp3AudioElement && mp3AudioElement.paused) {
+                    mp3AudioElement.play().catch(()=>{});
+                }
                 voiceInterval = setInterval(() => {
-                    speakAnnoyance();
+                    speakAnnoyanceDual();
                     playPiercingBeep();
-                }, 1500); // every 1.5 seconds
+                }, 1400); // rapid overlapping
             }
 
             function stopAnnoyance() {
-                if (voiceInterval) {
-                    clearInterval(voiceInterval);
-                    voiceInterval = null;
-                }
-                if (window.speechSynthesis) {
-                    speechSynthesis.cancel();
-                }
-                // Reload the page to full silence
+                if (voiceInterval) clearInterval(voiceInterval);
+                if (window.speechSynthesis) speechSynthesis.cancel();
+                if (mp3AudioElement) { mp3AudioElement.pause(); mp3AudioElement.currentTime = 0; }
+                // Reload to stop everything including rickroll
                 location.reload();
             }
 
-            // Moving button – pure evil
-            function moveButtonAwayFromMouse(e) {
-                const mouseX = e.clientX;
-                const mouseY = e.clientY;
-                const btnWidth = btn.offsetWidth;
-                const btnHeight = btn.offsetHeight;
-                const maxX = window.innerWidth - btnWidth;
-                const maxY = window.innerHeight - btnHeight;
-
-                let newX, newY;
-                let attempts = 0;
+            // Button movement - extremely evasive
+            function moveButtonAway(mx, my) {
+                const btnW = btn.offsetWidth, btnH = btn.offsetHeight;
+                const maxX = window.innerWidth - btnW, maxY = window.innerHeight - btnH;
+                let nx, ny, tries = 0;
                 do {
-                    newX = Math.random() * maxX;
-                    newY = Math.random() * maxY;
-                    attempts++;
-                } while (
-                    Math.abs(newX + btnWidth/2 - mouseX) < 160 &&
-                    Math.abs(newY + btnHeight/2 - mouseY) < 160 &&
-                    attempts < 50
-                );
-
-                btn.style.left = newX + 'px';
-                btn.style.top = newY + 'px';
+                    nx = Math.random() * maxX;
+                    ny = Math.random() * maxY;
+                    tries++;
+                } while (Math.abs(nx + btnW/2 - mx) < 200 && Math.abs(ny + btnH/2 - my) < 200 && tries < 50);
+                btn.style.left = nx + 'px';
+                btn.style.top = ny + 'px';
             }
 
-            // Additional chaos: spawn floating "hassan bhai stopppp" texts randomly
+            // Spawn floating text with both phrases
             function spawnFloatingText(x, y) {
+                const phrases = ['hassan bhai stopppp', 'hassan bhaii actuallyyyy', 'HASSAN BHAI STOOOPPP', 'actuallyyy hassan bhai'];
                 const txt = document.createElement('div');
                 txt.className = 'floating-text';
-                txt.textContent = 'hassan bhai stopppp!!';
+                txt.textContent = phrases[Math.floor(Math.random() * phrases.length)];
                 txt.style.left = x + 'px';
                 txt.style.top = y + 'px';
-                txt.style.setProperty('--dx', (Math.random() - 0.5) * 400);
-                txt.style.setProperty('--dy', (Math.random() - 0.5) * 400);
+                txt.style.setProperty('--dx', (Math.random() - 0.5) * 500);
+                txt.style.setProperty('--dy', (Math.random() - 0.5) * 500);
                 document.body.appendChild(txt);
-                setTimeout(() => txt.remove(), 2000);
+                setTimeout(() => txt.remove(), 2100);
             }
 
-            // The Big Red Button behavior
+            // Invert screen periodically for extra headache
+            let invertInterval = null;
+            function startInvertSeizures() {
+                if (invertInterval) return;
+                invertInterval = setInterval(() => {
+                    document.documentElement.style.setProperty('--invert', Math.random() > 0.5 ? '1' : '0');
+                }, 200);
+            }
+
+            // MAIN EVENT HANDLING
             btn.addEventListener('mouseover', (e) => {
-                initAudio(); // enable audio on any hover (user gesture)
-                moveButtonAwayFromMouse(e);
-                // Occasionally spawn floating texts when mouse near
-                if (Math.random() < 0.4) {
-                    spawnFloatingText(e.clientX, e.clientY);
-                }
+                moveButtonAway(e.clientX, e.clientY);
+                if (Math.random() < 0.5) spawnFloatingText(e.clientX, e.clientY);
             });
 
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                initAudio();
-                clickCount++;
-                // The voice triggers, then starts looping
-                speakAnnoyance();
+                initAudioCtx();
+                setupMP3();
+                startRickroll();
+                startInvertSeizures();
+                if (!voiceInterval) startContinuousAnnoyance();
+                speakAnnoyanceDual();
                 playPiercingBeep();
-                // After first click, kick off continuous loop
-                if (!voiceInterval) {
-                    startContinuousAnnoyance();
+                // Spawn massive texts
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => spawnFloatingText(e.clientX + Math.random()*200-100, e.clientY + Math.random()*200-100), i*60);
                 }
-                // Extra chaos: spawn more floating texts, shake extra hard
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(() => spawnFloatingText(e.clientX, e.clientY), i * 80);
-                }
-                // Make button jump away again
-                moveButtonAwayFromMouse(e);
-                // Increase background speed by manipulating animation (dynamically add class)
-                document.body.style.animationDuration = (0.08 / clickCount) + 's';
-                // After 10 clicks, spawn another moving button copy? Nah, just increase shakiness.
-                if (clickCount % 5 === 0) {
-                    // Add more marquees? Let's duplicate existing marquee
-                    const clone = document.querySelector('.marquee').cloneNode(true);
-                    clone.style.top = (20 + Math.random() * 80) + 'px';
-                    document.body.appendChild(clone);
+                moveButtonAway(e.clientX, e.clientY);
+                // Increase global shake tempo
+                document.body.style.animationDuration = '0.04s';
+                // After 10 clicks, add even more marquees
+                if (!window.__clickCount) window.__clickCount = 0;
+                window.__clickCount++;
+                if (window.__clickCount % 8 === 0) {
+                    const newMarquee = document.querySelector('.marquee').cloneNode(true);
+                    newMarquee.style.top = (30 + Math.random() * window.innerHeight * 0.8) + 'px';
+                    newMarquee.style.animationDuration = (2 + Math.random() * 4) + 's';
+                    document.body.appendChild(newMarquee);
                 }
             });
 
-            // The almost invisible stop button – barely functional
+            // The "stop" button is also impossible to click
             stopBtn.addEventListener('mouseover', (e) => {
-                // Also moves away! Making it impossible to click
                 const maxX = window.innerWidth - stopBtn.offsetWidth;
                 const maxY = window.innerHeight - stopBtn.offsetHeight;
-                let newX = Math.random() * maxX;
-                let newY = Math.random() * maxY;
-                stopBtn.style.left = newX + 'px';
-                stopBtn.style.top = newY + 'px';
+                stopBtn.style.left = (Math.random() * maxX) + 'px';
+                stopBtn.style.top = (Math.random() * maxY) + 'px';
                 stopBtn.style.position = 'fixed';
             });
 
@@ -326,39 +347,32 @@
                 stopAnnoyance();
             });
 
-            // If user clicks anywhere else, also cause chaos
+            // Any click on the page (not on the stop button) adds chaos
             document.addEventListener('click', (e) => {
                 if (e.target === btn || e.target === stopBtn) return;
-                initAudio();
+                initAudioCtx();
+                setupMP3();
+                startRickroll();
                 playPiercingBeep();
                 spawnFloatingText(e.clientX, e.clientY);
-                // Move the button as if it sensed your click
-                moveButtonAwayFromMouse({ clientX: e.clientX, clientY: e.clientY });
-                // Possibly start the voice if not started
-                if (!voiceInterval && clickCount === 0) {
-                    // They clicked elsewhere first, start the voice immediately
-                    speakAnnoyance();
-                    startContinuousAnnoyance();
-                    clickCount = 1;
-                }
+                moveButtonAway(e.clientX, e.clientY);
+                if (!voiceInterval) startContinuousAnnoyance();
             });
 
-            // Add some initial floating text to set the mood
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    for (let i = 0; i < 3; i++) {
-                        setTimeout(() => {
-                            spawnFloatingText(Math.random() * window.innerWidth, Math.random() * window.innerHeight);
-                        }, i * 200);
-                    }
-                }, 500);
-            });
-
-            // Prevent any right-click shenanigans? That could be too far, but let's just disable context menu for maximum annoyance
+            // Prevent context menu
             document.addEventListener('contextmenu', e => e.preventDefault());
 
-            console.log('🤬 hassan bhai stopppp has taken over your browser.');
-            console.log('There is no escape.');
+            // Initial mood
+            window.addEventListener('load', () => {
+                for (let i = 0; i < 4; i++) {
+                    setTimeout(() => spawnFloatingText(Math.random() * window.innerWidth, Math.random() * window.innerHeight), i * 300);
+                }
+                console.log('🤬 hassan bhai stopppp engine running.');
+                console.log('Your MP3 file must be named "hassan.mp3" and placed in the same folder.');
+            });
+
+            // Instructions for the user about MP3 naming
+            console.info('📢 If you recorded an MP3, name it exactly "hassan.mp3" and put it next to this HTML file.');
         })();
     </script>
 </body>
