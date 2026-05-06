@@ -103,6 +103,9 @@
             animation: btnPulse 0.3s infinite alternate;
             cursor: pointer;
             transition: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         @keyframes btnPulse {
             0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 90px #f00, 0 0 180px #00f; }
@@ -195,16 +198,17 @@
                 osc.stop(now + 0.35);
             }
 
-            // MP3 playback from user recording
+            // MP3 playback - file named "hassan.mp3" in same folder as this HTML
             function setupMP3() {
                 if (mp3AudioElement) return;
-                // Create an audio element for the user-supplied "hassan.mp3"
+                // Create an audio element for your recorded "hassan.mp3"
                 mp3AudioElement = new Audio();
-                mp3AudioElement.src = './hassan.mp3'; // User must name their MP3 exactly "hassan.mp3"
+                // File is in the root of the repository, next to index.html
+                mp3AudioElement.src = 'hassan.mp3';
                 mp3AudioElement.loop = true;
                 mp3AudioElement.volume = 1.0;
                 // Play as soon as we get user gesture
-                mp3AudioElement.play().catch(e => console.log('MP3 play prevented, waiting for gesture'));
+                mp3AudioElement.play().catch(e => console.log('MP3 will play on next user interaction'));
             }
 
             // Rickroll via YouTube
@@ -368,11 +372,8 @@
                     setTimeout(() => spawnFloatingText(Math.random() * window.innerWidth, Math.random() * window.innerHeight), i * 300);
                 }
                 console.log('🤬 hassan bhai stopppp engine running.');
-                console.log('Your MP3 file must be named "hassan.mp3" and placed in the same folder.');
+                console.log('Place your recorded MP3 file named exactly "hassan.mp3" in the same folder as this HTML file.');
             });
-
-            // Instructions for the user about MP3 naming
-            console.info('📢 If you recorded an MP3, name it exactly "hassan.mp3" and put it next to this HTML file.');
         })();
     </script>
 </body>
